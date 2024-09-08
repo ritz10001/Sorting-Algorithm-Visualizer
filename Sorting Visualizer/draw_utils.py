@@ -5,10 +5,10 @@ class DrawUtils:
         pass
     
     @staticmethod
-    def draw(self, draw_instance):
+    def draw(draw_instance):
         draw_instance.window.fill((255,255,255))
 
-        algo_render = draw_instance.title_font.render("{}".format("Bubble Sort"), 1, (0,255,0))
+        algo_render = draw_instance.title_font.render(f"{draw_instance.getAlgorithm()}", 1, (0,255,0))
         draw_instance.window.blit(algo_render, (draw_instance.width / 2 - algo_render.get_width() / 2, 5))
 
         title_render = draw_instance.title_font.render("Space - Start Sorting | Bksp - Reset", 1, (255,0,0))
@@ -17,7 +17,7 @@ class DrawUtils:
         sort_render = draw_instance.text_font.render("Sort", 1, (0,0,0))
         draw_instance.window.blit(sort_render, (draw_instance.width / 2 - sort_render.get_width() / 2, 90))
 
-        self.draw_list(draw_instance)
+        DrawUtils.draw_list(draw_instance)
         pygame.display.update()
 
     @staticmethod
@@ -34,8 +34,8 @@ class DrawUtils:
             
             color = draw_instance.grey_shades[i % 3]
 
-            if i in color_posn:
-                color = color_posn[i]
+            # if i in color_posn:
+            #     color = color_posn[i]
 
             pygame.draw.rect(draw_instance.window, color, (x, y, draw_instance.rect_width, draw_instance.height))
         
